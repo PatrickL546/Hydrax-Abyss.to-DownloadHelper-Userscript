@@ -17,7 +17,7 @@
 (function () {
     'use strict';
 
-    const urlRe = /\?v=(.*?)$/;
+    const urlRe = /\?v=([a-zA-Z0-9]*)/;
     const getVidIDUrl = [];
 
     if (urlRe.exec(window.location.href)) {
