@@ -6,6 +6,8 @@ Userscripts extensions  like [Tampermonkey](https://www.tampermonkey.net/)
 
 # [Click here to install](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/raw/master/Hydrax-Abyss.to-DownloadHelper.user.js)
 
+# [Click here to go to the downloader](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Python)
+
 ## Usage
 
 - Open the extensions menu and press "G" or click Get Vid_ID
