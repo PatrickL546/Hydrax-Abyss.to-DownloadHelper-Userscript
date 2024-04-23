@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hydrax/Abyss.to DownloadHelper
 // @namespace    https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper
-// @version      0.1
+// @version      0.2
 // @description  Get Vid_ID
 // @icon64       https://raw.githubusercontent.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/master/icon.png
 // @grant        GM_registerMenuCommand
@@ -17,12 +17,15 @@
 (function () {
     'use strict';
 
-    const urlRe = /\?v=([a-zA-Z0-9]*)/;
+    const urlRe = /\?v=([0-9A-Za-z_-]*)/;
+    const atobRe = /PLAYER\(atob\("(.*)"\)\)/;
     const getVidIDUrl = [];
 
-    if (urlRe.exec(window.location.href)) {
-        getVidIDUrl.push(urlRe.exec(window.location.href)[1]);
-    };
+    document.querySelectorAll("script").forEach(element => {
+        if (urlRe.exec(window.location.href) && (atobRe.exec(element.textContent))) {
+            getVidIDUrl.push(urlRe.exec(window.location.href)[1]);
+        };
+    });
 
     if (getVidIDUrl.length) {
         GM_setValue("vidID", Array.from(new Set(getVidIDUrl)));
