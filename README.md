@@ -20,10 +20,4 @@ Userscripts extensions  like [Tampermonkey](https://www.tampermonkey.net/)
 
 - Select and copy it
 
-![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/assets/75874561/106d37fa-3908-4bed-a1ce-c0cba432db4a)
-
-- Or copy it from the console. Make sure Preserve log is enabled
-
-![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/assets/75874561/57b786d2-2109-489d-91b9-4c26fccf363c)
-
-![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/assets/75874561/5ab11101-5da7-4217-86f3-334dfd987d4b)
+![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/assets/75874561/7b622ebf-d140-420a-a067-0b9dfeb10cfc)
