@@ -1,8 +1,6 @@
 # This is an early release without the ability to download from the browser. Currently working on it
 
-I'm a bit stuck. Very little programming knowledge especially web stuff. I was able to make it download but not how I wanted it. Trying to download the video via the browser downloader to make it friendly seems pretty difficult
-
-I was able to make the browser download the video with the help of Requestly extension. Adding Referer and Content-Disposition to the response header since it doesn't have one. Else it just tries to download it as txt file. But making the Userscript do it is a problem
+Decided to not go with using browser api download. Using script download with progress bar. Soon to be finished
 
 ## Requirements
 
