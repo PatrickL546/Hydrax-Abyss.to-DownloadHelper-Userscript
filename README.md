@@ -8,9 +8,9 @@ It can use up connection attemps and your connection might get blocked for a whi
 
 # [Click here to install](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/raw/master/Hydrax-Abyss.to-DownloadHelper.user.js)
 
-# [Click here for Python downloader](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Python)
+# [Python downloader](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Python)
 
-# [Click here for my guide](https://github.com/PatrickL546/How-to-download-hydrax-abyss.to)
+# [Guide](https://github.com/PatrickL546/How-to-download-hydrax-abyss.to)
 
 ## Usage
 
