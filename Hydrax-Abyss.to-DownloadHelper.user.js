@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hydrax/Abyss.to DownloadHelper
 // @namespace    https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper
-// @version      1
+// @version      1.1
 // @description  Downloads Hydrax/Abyss.to videos
 // @icon64       https://raw.githubusercontent.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/master/icon.png
 // @grant        GM_registerMenuCommand
@@ -45,19 +45,10 @@
 
             info = `Vid_ID: ${vidID}\nReferer: ${referer}\nUrl_1080: ${url1080}\nUrl_720: ${url720}\nUrl_480_360: ${url480_360}`;
 
-            if (json.sources.includes('fullHd')) {
-                GM_registerMenuCommand('Download 1080p', download1080, 'D');
-            };
-            if (json.sources.includes('hd')) {
-                GM_registerMenuCommand('Download 720p', download720, 'W');
-            };
-            if (json.sources.includes('mHd')) {
-                GM_registerMenuCommand('Download 480p', download480, 'A');
-            };
-            if (json.sources.includes('sd')) {
-                GM_registerMenuCommand('Download 360p', download360, 'N');
-            };
-
+            GM_registerMenuCommand('Download 1080p', download1080, 'D');
+            GM_registerMenuCommand('Download 720p', download720, 'W');
+            GM_registerMenuCommand('Download 480p', download480, 'A');
+            GM_registerMenuCommand('Download 360p', download360, 'N');
             GM_registerMenuCommand('Show Info', showInfo, 'S');
             GM_registerMenuCommand('Copy Info', copyInfo, 'C');
             GM_registerMenuCommand('Copy Vid_ID', copyVidID, 'V');
