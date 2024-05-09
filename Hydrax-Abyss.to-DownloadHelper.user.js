@@ -47,8 +47,7 @@
 
             GM_registerMenuCommand('Download 1080p', download1080, 'D');
             GM_registerMenuCommand('Download 720p', download720, 'W');
-            GM_registerMenuCommand('Download 480p', download480, 'A');
-            GM_registerMenuCommand('Download 360p', download360, 'N');
+            GM_registerMenuCommand('Download 480p or 360p', download480_360, 'A');
             GM_registerMenuCommand('Show Info', showInfo, 'S');
             GM_registerMenuCommand('Copy Info', copyInfo, 'C');
             GM_registerMenuCommand('Copy Vid_ID', copyVidID, 'V');
@@ -108,28 +107,19 @@
     function download1080() {
         download(url1080, `${vidID}_1080.mp4`);
     };
-
     function download720() {
         download(url720, `${vidID}_720.mp4`);
     };
-
-    function download480() {
-        download(url480_360, `${vidID}_480.mp4`);
+    function download480_360() {
+        download(url480_360, `${vidID}_480_360.mp4`);
     };
-
-    function download360() {
-        download(url480_360, `${vidID}_360.mp4`);
-    };
-
     function showInfo() {
         alert(info);
     };
-
     function copyInfo() {
         GM_setClipboard(info);
         alert('Copied info to clipboard');
     };
-
     function copyVidID() {
         GM_setClipboard(vidID);
         alert(`Copied "${vidID}" to clipboard`);
