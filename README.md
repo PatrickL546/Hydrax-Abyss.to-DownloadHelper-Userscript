@@ -1,28 +1,26 @@
-# This is an early release without the ability to download from the browser. Currently working on it
+# Issues
 
-Decided to not go with using browser api download. Using script download with progress bar. Soon to be finished
+It can use up connection attemps and your connection might get blocked for a while for that video
 
-## Requirements
+# Requirements
 
-Userscripts extensions  like [Tampermonkey](https://www.tampermonkey.net/)
+- Userscripts extensions  like [Tampermonkey](https://www.tampermonkey.net/)
 
 # [Click here to install](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/raw/master/Hydrax-Abyss.to-DownloadHelper.user.js)
 
-# [Click here to go to the downloader](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Python)
+# [Click here for Python downloader](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Python)
 
 # [Click here for my guide](https://github.com/PatrickL546/How-to-download-hydrax-abyss.to)
 
 ## Usage
 
-- Open the extensions menu and press "G" or click Get Vid_ID
+- Open the extensions menu and use the shortcuts or click
 
-![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/assets/75874561/9acbc656-3b41-4c0c-bd2d-f4aace066ca6)
+![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/b7f03c37-2c33-4e53-abee-7e5b6e0ff22d)
+
 
 - Or use the context menu before you hit play
 
-![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/assets/75874561/dfda2c38-3898-4684-b61c-d1dc85bff9b3)
+![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/740f2418-ed38-4534-bb51-0893e1749c8e)
 
-- Select and copy Vid_ID to use for my downloader
-- You can use the domain and referer to use with other downloader
-
-![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/assets/75874561/7b622ebf-d140-420a-a067-0b9dfeb10cfc)
+- You can use the Copy Vid_ID to use with my Python downloader
