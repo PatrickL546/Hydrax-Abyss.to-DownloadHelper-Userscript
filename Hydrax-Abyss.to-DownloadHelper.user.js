@@ -96,7 +96,7 @@
     function getSize(size) {
         let sizes = [' Bytes', ' KB', ' MB', ' GB',
             ' TB', ' PB', ' EB', ' ZB', ' YB'];
-     
+
         for (let i = 1; i < sizes.length; i++) {
             if (size < Math.pow(1024, i))
                 return (Math.round((size / Math.pow(
