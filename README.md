@@ -14,13 +14,16 @@ It can use up connection attemps and your connection might get blocked for a whi
 
 ## Usage
 
+- You can use the Copy Vid_ID to use with my Python downloader
+
 - Open the extensions menu and use the shortcuts or click
 
 ![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/d9917378-6921-4723-bf8d-e181f70b6767)
 
+![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/ce8870a6-c08b-401a-bb31-c82d4704fedc)
 
 - Or use the context menu before you hit play
 
 ![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/63f646ef-b8e2-425f-9af0-5997edc37590)
 
-- You can use the Copy Vid_ID to use with my Python downloader
+
