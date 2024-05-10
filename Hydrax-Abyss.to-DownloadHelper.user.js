@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hydrax/Abyss.to DownloadHelper
 // @namespace    https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper
-// @version      1.2
+// @version      1.3
 // @description  Downloads Hydrax/Abyss.to videos
 // @icon64       https://raw.githubusercontent.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/master/icon.png
 // @grant        GM_registerMenuCommand
@@ -136,7 +136,7 @@
         download(url720, `${vidID}_720.mp4`);
     };
     function download480_360() {
-        download(url480_360, `${vidID}_480_360.mp4`);
+        download(url480_360, `${vidID}.mp4`);
     };
     function showInfo() {
         alert(info);
