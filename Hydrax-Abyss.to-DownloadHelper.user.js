@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hydrax/Abyss.to DownloadHelper
 // @namespace    https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper
-// @version      1.1
+// @version      1.2
 // @description  Downloads Hydrax/Abyss.to videos
 // @icon64       https://raw.githubusercontent.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/master/icon.png
 // @grant        GM_registerMenuCommand
@@ -62,6 +62,16 @@
         container.style.width = '100%';
         container.style.zIndex = '100000000';
 
+        const text = document.createElement('div');
+        text.className = 'jw-settings-content-item';
+        text.id = 'DownloadHelper-progress-text';
+        text.style.fontFamily = 'Arial, Helvetica, sans-serif';
+        text.style.color = 'rgba(255, 255, 255, 0.8)';
+        text.style.textShadow = 'black 1px 1px 3px';
+        text.style.textAlign = 'center';
+        text.style.position = 'fixed';
+        text.style.padding = '0';
+
         const progressBar = document.createElement('div');
         progressBar.id = 'DownloadHelper-progress-bar';
         progressBar.style.backgroundColor = '#44D62C';
@@ -77,9 +87,22 @@
         button.style.width = '69.3594px'
         button.onclick = () => { download.abort() };
 
+        container.appendChild(text);
         container.appendChild(progressBar);
         container.appendChild(button);
         document.body.prepend(container);
+    };
+
+    function getSize(size) {
+        let sizes = [' Bytes', ' KB', ' MB', ' GB',
+            ' TB', ' PB', ' EB', ' ZB', ' YB'];
+     
+        for (let i = 1; i < sizes.length; i++) {
+            if (size < Math.pow(1024, i))
+                return (Math.round((size / Math.pow(
+                    1024, i - 1)) * 100) / 100).toFixed(2) + sizes[i - 1];
+        }
+        return size;
     };
 
     function download(url, name) {
@@ -90,6 +113,8 @@
             onprogress: (progress) => {
                 const progressBar = document.getElementById('DownloadHelper-progress-bar');
                 const percent = (progress.loaded / progress.total) * 100;
+                const progressText = document.getElementById('DownloadHelper-progress-text');
+                progressText.textContent = (`${getSize(progress.loaded)} / ${getSize(progress.total)}`)
                 progressBar.style.width = `${percent}%`;
             },
             onerror: (err) => {
