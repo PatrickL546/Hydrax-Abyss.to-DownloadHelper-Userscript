@@ -4,7 +4,7 @@ It can use up connection attemps and your connection might get blocked for a whi
 
 # Requirements
 
-- Userscripts extensions  like [Tampermonkey](https://www.tampermonkey.net/)
+- Install Userscripts extensions  like [Tampermonkey](https://www.tampermonkey.net/) then click the link below
 
 # [Click here to install](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/raw/master/Hydrax-Abyss.to-DownloadHelper.user.js)
 
