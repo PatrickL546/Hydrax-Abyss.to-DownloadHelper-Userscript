@@ -25,5 +25,3 @@ It can use up connection attemps and your connection might get blocked for a whi
 - Or use the context menu before you hit play
 
 ![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/63f646ef-b8e2-425f-9af0-5997edc37590)
-
-
