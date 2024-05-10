@@ -18,6 +18,8 @@ It can use up connection attemps and your connection might get blocked for a whi
 
 - Open the extensions menu and use the shortcuts or click
 
+- Download will not stop after closing the window. Be careful not to start multiple downloads of the same video or you might get blocked
+
 ![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/d9917378-6921-4723-bf8d-e181f70b6767)
 
 ![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/ce8870a6-c08b-401a-bb31-c82d4704fedc)
