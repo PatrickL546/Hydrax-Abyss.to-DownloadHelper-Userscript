@@ -1,10 +1,10 @@
-# Issues
-
-It can use up connection attemps and your connection might get blocked for a while for that video
+# [Info](https://github.com/PatrickL546/How-to-download-hydrax-abyss.to)
 
 # [Python downloader](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Python)
 
-# [Guide](https://github.com/PatrickL546/How-to-download-hydrax-abyss.to)
+# Issues
+
+It can use up connection attemps and your connection might get blocked for a while for that video
 
 # Requirements
 
