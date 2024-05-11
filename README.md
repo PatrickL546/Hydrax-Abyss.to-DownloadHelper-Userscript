@@ -20,10 +20,10 @@ It can use up connection attemps and your connection might get blocked for a whi
 
 - Download will not stop after closing the window. Be careful to not start multiple downloads of the same video or you might get blocked
 
-![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/d9917378-6921-4723-bf8d-e181f70b6767)
+![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/b7f03c37-2c33-4e53-abee-7e5b6e0ff22d)
 
 ![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/ce8870a6-c08b-401a-bb31-c82d4704fedc)
 
 - Or use the context menu before you hit play
 
-![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/63f646ef-b8e2-425f-9af0-5997edc37590)
+![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/740f2418-ed38-4534-bb51-0893e1749c8e)
