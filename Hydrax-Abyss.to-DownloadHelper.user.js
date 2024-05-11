@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hydrax/Abyss.to DownloadHelper
 // @namespace    https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper
-// @version      1.4
+// @version      1.5
 // @description  Downloads Hydrax/Abyss.to videos
 // @icon64       https://raw.githubusercontent.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/master/icon.png
 // @grant        GM_registerMenuCommand
@@ -31,9 +31,9 @@
 
     document.querySelectorAll('script').forEach(element => {
         if (urlRe.exec(window.location.href) &&
-            (jwRe.exec(element.textContent)) &&
-            (atobRe.exec(element.textContent)) &&
-            (pieceRe.exec(element.textContent))) {
+            jwRe.exec(element.textContent) &&
+            atobRe.exec(element.textContent) &&
+            pieceRe.exec(element.textContent)) {
 
             vidID = urlRe.exec(window.location.href)[1];
 
