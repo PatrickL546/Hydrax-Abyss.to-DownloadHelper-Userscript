@@ -2,7 +2,7 @@
 
 # [Python downloader](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Python)
 
-# Requirements
+## Requirements
 
 - Install Userscripts extensions  like [Tampermonkey](https://www.tampermonkey.net/) then click the link below
 
