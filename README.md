@@ -2,10 +2,6 @@
 
 # [Python downloader](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Python)
 
-# Issues
-
-It can use up connection attemps and your connection might get blocked for a while for that video
-
 # Requirements
 
 - Install Userscripts extensions  like [Tampermonkey](https://www.tampermonkey.net/) then click the link below
