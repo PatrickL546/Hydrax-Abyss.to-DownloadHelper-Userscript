@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hydrax/Abyss.to DownloadHelper
 // @namespace    https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper
-// @version      1.3
+// @version      1.4
 // @description  Downloads Hydrax/Abyss.to videos
 // @icon64       https://raw.githubusercontent.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/master/icon.png
 // @grant        GM_registerMenuCommand
