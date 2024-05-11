@@ -20,6 +20,7 @@
     const urlRe = /\?v=([0-9A-Za-z_-]+)/;
     const jwRe = /jwplayer/;
     const atobRe = /PLAYER\(atob\("(.*)"\)\)/;
+    const pieceRe = /({"pieceLength.+?})/;
 
     let vidID;
     let url1080;
@@ -31,23 +32,37 @@
     document.querySelectorAll('script').forEach(element => {
         if (urlRe.exec(window.location.href) &&
             (jwRe.exec(element.textContent)) &&
-            (atobRe.exec(element.textContent))) {
+            (atobRe.exec(element.textContent)) &&
+            (pieceRe.exec(element.textContent))) {
 
             vidID = urlRe.exec(window.location.href)[1];
 
-            const atobElement = atobRe.exec(element.textContent)[1];
-            const json = JSON.parse(atob(atobElement));
+            const pieceElement = pieceRe.exec(element.textContent)[1];
+            const pieceJson = JSON.parse(pieceElement);
 
-            url1080 = `https://${json.domain}/whw${json.id}`;
-            url720 = `https://${json.domain}/www${json.id}`;
-            url480_360 = `https://${json.domain}/${json.id}`;
-            referer = 'https://abysscdn.com';
+            const atobElement = atobRe.exec(element.textContent)[1];
+            const atobJson = JSON.parse(atob(atobElement));
+
+            url1080 = `https://${atobJson.domain}/whw${atobJson.id}`;
+            url720 = `https://${atobJson.domain}/www${atobJson.id}`;
+            url480_360 = `https://${atobJson.domain}/${atobJson.id}`;
+            referer = `https://abysscdn.com/?v=${vidID}`;
 
             info = `Vid_ID: ${vidID}\nReferer: ${referer}\nUrl_1080: ${url1080}\nUrl_720: ${url720}\nUrl_480_360: ${url480_360}`;
 
-            GM_registerMenuCommand('Download 1080p', download1080, 'D');
-            GM_registerMenuCommand('Download 720p', download720, 'W');
-            GM_registerMenuCommand('Download 480p or 360p', download480_360, 'A');
+            if (pieceJson.fullHd) {
+                GM_registerMenuCommand('Download 1080p', download1080, 'D');
+            };
+            if (pieceJson.hd) {
+                GM_registerMenuCommand('Download 720p', download720, 'W');
+            };
+            if (pieceJson.mHd) {
+                GM_registerMenuCommand('Download 480p', download480, 'A');
+            };
+            if (pieceJson.sd) {
+                GM_registerMenuCommand('Download 360p', download360, 'N');
+            };
+
             GM_registerMenuCommand('Show Info', showInfo, 'S');
             GM_registerMenuCommand('Copy Info', copyInfo, 'C');
             GM_registerMenuCommand('Copy Vid_ID', copyVidID, 'V');
@@ -135,8 +150,11 @@
     function download720() {
         download(url720, `${vidID}_720.mp4`);
     };
-    function download480_360() {
-        download(url480_360, `${vidID}.mp4`);
+    function download480() {
+        download(url480_360, `${vidID}_480.mp4`);
+    };
+    function download360() {
+        download(url480_360, `${vidID}_360.mp4`);
     };
     function showInfo() {
         alert(info);
