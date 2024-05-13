@@ -18,7 +18,7 @@
 
 ![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/b7f03c37-2c33-4e53-abee-7e5b6e0ff22d)
 
-![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/ce8870a6-c08b-401a-bb31-c82d4704fedc)
+![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/3da85784-301c-4152-8778-0a01aaea7a7c)
 
 - Or use the context menu before you hit play
 
