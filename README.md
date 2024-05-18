@@ -10,16 +10,16 @@
 
 ## Usage
 
-- You can use the Copy Vid_ID to use with my Python downloader
-
-- Open the extensions menu and use the shortcuts or click
+- Open the extensions menu and use the shortcuts or click an option
 
 - Download will not stop after closing the window. Be careful to not start multiple downloads of the same video or you might get blocked
 
-![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/b7f03c37-2c33-4e53-abee-7e5b6e0ff22d)
+- It builds a list of Vid_ID it finds, and you can copy individual ID or the whole list to use with my [Python downloader](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Python)
+
+![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/42ba3c1e-b13d-4d1c-9d83-9c8de1ce22a6)
 
 ![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/08c142ae-7374-4781-9da5-a6262a41ba49)
 
 - Or use the context menu before you hit play
 
-![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/740f2418-ed38-4534-bb51-0893e1749c8e)
+![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/4131228d-af07-4ac9-8942-9bcaf9ddbda0)
