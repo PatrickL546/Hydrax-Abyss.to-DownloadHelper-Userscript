@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         Hydrax/Abyss.to DownloadHelper
 // @namespace    https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper
-// @version      1.6
+// @version      1.7
 // @description  Downloads Hydrax/Abyss.to videos
 // @icon64       https://raw.githubusercontent.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/master/icon.png
 // @grant        GM_registerMenuCommand
 // @grant        GM_setClipboard
+// @grant        GM_setValue
+// @grant        GM_getValue
 // @grant        GM_download
 // @author       PatrickL546
 // @match        *://*/*
@@ -50,6 +52,15 @@
 
             info = `Vid_ID: ${vidID}\nReferer: ${referer}\nUrl_1080: ${url1080}\nUrl_720: ${url720}\nUrl_480_360: ${url480_360}`;
 
+            const foundVidID = GM_getValue('foundVidID', '');
+            if (foundVidID.length == 0) {
+                GM_setValue('foundVidID', vidID);
+            } else {
+                if (!foundVidID.includes(vidID)) {
+                    GM_setValue('foundVidID', foundVidID.concat(' ', vidID));
+                };
+            };
+
             if (pieceJson.fullHd) {
                 GM_registerMenuCommand('Download 1080p', download1080, 'D');
             };
@@ -63,9 +74,10 @@
                 GM_registerMenuCommand('Download 360p', download360, 'A');
             };
 
-            GM_registerMenuCommand('Show Info', showInfo, 'S');
-            GM_registerMenuCommand('Copy Info', copyInfo, 'C');
+            GM_registerMenuCommand('Copy Info', copyInfo, 'F');
             GM_registerMenuCommand('Copy Vid_ID', copyVidID, 'V');
+            GM_registerMenuCommand('Copy Vid_ID List', copyVidIDList, 'C');
+            GM_registerMenuCommand('Clear Vid_ID List', clearVidIDList, 'E');
         };
     });
 
@@ -167,19 +179,28 @@
         download(url480_360, `${vidID}_360.mp4`);
     };
 
-    function showInfo() {
-        alert(info);
-    };
-
     function copyInfo() {
         GM_setClipboard(info);
         console.log(info);
-        alert('Copied info to clipboard');
+        alert(info);
     };
 
     function copyVidID() {
         GM_setClipboard(vidID);
         console.log(vidID);
         alert(`Copied "${vidID}" to clipboard`);
+    };
+
+    function copyVidIDList() {
+        const foundVidID = GM_getValue('foundVidID', '');
+        GM_setClipboard(foundVidID);
+        console.log(foundVidID);
+        alert(`Copied "${foundVidID}" to clipboard`);
+    };
+
+    function clearVidIDList() {
+        GM_setValue('foundVidID', '');
+        console.log('Cleared Vid_ID List');
+        alert('Cleared Vid_ID List');
     };
 })();
