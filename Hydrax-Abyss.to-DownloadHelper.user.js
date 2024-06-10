@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hydrax/Abyss.to DownloadHelper
 // @namespace    https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper
-// @version      1.7
+// @version      1.8
 // @description  Downloads Hydrax/Abyss.to videos
 // @icon64       https://raw.githubusercontent.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/master/icon.png
 // @grant        GM_registerMenuCommand
@@ -195,7 +195,13 @@
         const foundVidID = GM_getValue('foundVidID', '');
         GM_setClipboard(foundVidID);
         console.log(foundVidID);
-        alert(`Copied "${foundVidID}" to clipboard`);
+        let foundCount;
+        if (foundVidID) {
+            foundCount = foundVidID.split(' ').length;
+        } else {
+            foundCount = 0;
+        };
+        alert(`Found ${foundCount} Vid_ID\nCopied "${foundVidID}" to clipboard`);
     };
 
     function clearVidIDList() {
