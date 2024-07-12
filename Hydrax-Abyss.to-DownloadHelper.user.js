@@ -115,13 +115,13 @@
         button.textContent = 'Cancel';
         button.style.backgroundColor = '#333333';
         button.style.fontWeight = 'bold';
-        button.style.fontSize = '4vh'
+        button.style.fontSize = '4vh';
         button.style.width = '11vw';
         button.style.height = '6vh';
         button.style.padding = '0';
         button.style.border = '0';
         button.style.position = 'fixed';
-        button.onclick = () => { download.abort() };
+        button.onclick = () => { download.abort(); };
 
         container.appendChild(text);
         container.appendChild(progressBar);
@@ -154,7 +154,7 @@
 
             const button = document.getElementById('DownloadHelper-cancel-button');
             button.textContent = 'Ok';
-            button.onclick = () => { document.getElementById('DownloadHelper-progress-container').remove() };
+            button.onclick = () => { document.getElementById('DownloadHelper-progress-container').remove(); };
 
         } else {
             const download = GM_download({
