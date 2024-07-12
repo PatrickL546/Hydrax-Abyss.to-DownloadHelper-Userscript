@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hydrax/Abyss.to DownloadHelper
 // @namespace    https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper
-// @version      1.9
+// @version      1.10
 // @description  Downloads Hydrax/Abyss.to videos
 // @icon64       https://raw.githubusercontent.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/master/icon.png
 // @grant        GM_registerMenuCommand
@@ -24,7 +24,7 @@
     const urlRe = /v=([^\\?&]+)/;
     const jwRe = /jwplayer/;
     const atobRe = /PLAYER\(atob\("(.*)"\)\)/;
-    const pieceRe = /({"pieceLength.+?})/;
+    const pieceRe = /({"pieceLength.+?});/;
 
     let vidID;
     let url1080;
@@ -140,24 +140,9 @@
         return size + sizes[0];
     };
 
-    async function download(url, name) {
+    function download(url, name) {
         if (navigator.userAgent.match('Chrome')) {
-            const location = await GM.xmlHttpRequest({ url: url });
-            url = location.finalUrl;
-            const download = GM_download({
-                url: url,
-                name: name,
-                headers: { 'referer': referer },
-                onerror: (err) => {
-                    console.warn(err);
-                    alert(`Download error: ${err.error}\nReason: ${JSON.stringify(err.details)}`);
-                    document.getElementById('DownloadHelper-progress-container').remove();
-                },
-                onload: () => {
-                    document.getElementById('DownloadHelper-progress-container').remove();
-                },
-            });
-            createProgressBar(download);
+            createProgressBar();
 
             const progressBar = document.getElementById('DownloadHelper-progress-bar');
             progressBar.style.backgroundColor = '#D22B2B';
@@ -165,13 +150,17 @@
             progressBar.style.height = '10vh';
 
             const progressText = document.getElementById('DownloadHelper-progress-text');
-            progressText.textContent = 'Progressbar is broken in Chrome. Click "Always allow all domains" to avoid popup. Download is still working. Try Firefox or Python downloader.';
+            progressText.textContent = 'Download in Chrome is currently broken from Tampermonkey moving to Manifest V3. Try using Firefox or Python downloader.';
+
+            const button = document.getElementById('DownloadHelper-cancel-button');
+            button.textContent = 'Ok';
+            button.onclick = () => { document.getElementById('DownloadHelper-progress-container').remove() };
 
         } else {
             const download = GM_download({
                 url: url,
                 name: name,
-                headers: { 'referer': referer },
+                headers: { 'Referer': referer },
                 onprogress: (progress) => {
                     const progressBar = document.getElementById('DownloadHelper-progress-bar');
                     const percent = (progress.loaded / progress.total) * 100;
