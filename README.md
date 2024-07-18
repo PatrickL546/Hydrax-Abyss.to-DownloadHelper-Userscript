@@ -6,9 +6,11 @@
 
 - Install [Tampermonkey](https://www.tampermonkey.net/) then [click here](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/raw/master/Hydrax-Abyss.to-DownloadHelper.user.js)
 
-## Optional
+## Recommended
 
 - Install [Requestly](https://requestly.com/) and set it up like [this](https://github.com/PatrickL546/How-to-download-hydrax-abyss.to?tab=readme-ov-file#download-from-browser)
+
+  - Downloads via browser downloader
 
 ## Usage
 
