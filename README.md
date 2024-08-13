@@ -2,6 +2,9 @@
 
 # [Python downloader](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Python)
 
+> [!WARNING]  
+> Outdated and broken due to new update
+
 ## Requirements
 
 - Install [Tampermonkey](https://www.tampermonkey.net/) then [click here](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/raw/master/Hydrax-Abyss.to-DownloadHelper.user.js)
