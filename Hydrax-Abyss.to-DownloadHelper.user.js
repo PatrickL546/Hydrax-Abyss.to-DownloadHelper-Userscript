@@ -11,7 +11,7 @@
 // @run-at       document-idle
 // @match        *://*/*
 // @connect      *
-// @version      1.11
+// @version      2.0
 // @grant        GM_registerMenuCommand
 // @grant        GM_setClipboard
 // @grant        GM_setValue
@@ -25,29 +25,38 @@
     'use strict';
 
     const urlRe = /v=([^\\?&]+)/;
-    const jwPlayerRe = /iamcdn\.net\/players\/jwplayer/;
-    const bundleRe = /iamcdn\.net\/players\/bundle/;
-    const playhydraxRe = /iamcdn\.net\/players\/playhydrax/;
-    const pieceLengthRe = /({"pieceLength.+?});/;
-    const atobRe = /PLAYER\(atob\("(.*?)"/;
+    const jwPlayerRe = /iamcdn\.net\/player\/jwplayer/;
+    const coreRe = /iamcdn\.net\/player\/core/;
+    const aaEncodeRe = /(ﾟωﾟﾉ=.+?) \('_'\);/;
 
-    if (urlRe.test(window.location.href) &&
-        jwPlayerRe.test(window.document.head.innerHTML) &&
-        bundleRe.test(window.document.body.innerHTML) &&
-        playhydraxRe.test(window.document.body.innerHTML) &&
-        pieceLengthRe.test(window.document.body.innerHTML) &&
-        atobRe.test(window.document.body.innerHTML)) {
+    const atobRe = /atob\("(.+?)"\)/;
 
-        const vidID = window.location.href.match(urlRe)[1];
-        const pieceLengthJson = JSON.parse(window.document.body.innerHTML.match(pieceLengthRe)[1]);
-        const atobJson = JSON.parse(atob(window.document.body.innerHTML.match(atobRe)[1]));
+    if (urlRe.test(location.href) &&
+        jwPlayerRe.test(document.head.innerHTML) &&
+        coreRe.test(document.body.innerHTML) &&
+        aaEncodeRe.test(document.body.textContent)) {
+
+        const encoded = document.body.textContent.match(aaEncodeRe)[1] + '.toString()';
+        const decoded = eval?.(encoded);
+
+        const atobJson = JSON.parse(atob(decoded.match(atobRe)[1]));
+        const strAtobJson = JSON.stringify(atobJson);
+
+        const vidID = atobJson.slug;
+        const referer = 'https://abysscdn.com/';
         const url1080 = `https://${atobJson.domain}/whw${atobJson.id}`;
         const url720 = `https://${atobJson.domain}/www${atobJson.id}`;
-        const url480_360 = `https://${atobJson.domain}/${atobJson.id}`;
-        const referer = 'https://abysscdn.com/';
-        const info = `Referer: ${referer}\nUrl_1080: ${url1080}\nUrl_720: ${url720}\nUrl_480_360: ${url480_360}`;
+        const url360 = `https://${atobJson.domain}/${atobJson.id}`;
+        const info = `
+Referer: ${referer}
+Url_1080p: ${url1080}
+Url_720p: ${url720}
+Url_360p: ${url360}
+atobJson: ${strAtobJson}
+`;
 
         const foundVidID = GM_getValue('foundVidID', '');
+
         if (foundVidID.length == 0) {
             GM_setValue('foundVidID', vidID);
         } else {
@@ -56,37 +65,38 @@
             };
         };
 
-        if (pieceLengthJson.fullHd) { GM_registerMenuCommand('Download 1080p', () => download(url1080, `${vidID}_1080.mp4`), 'D'); };
-        if (pieceLengthJson.hd) { GM_registerMenuCommand('Download 720p', () => download(url720, `${vidID}_720.mp4`), 'W'); };
-        if (pieceLengthJson.mHd) { GM_registerMenuCommand('Download 480p', () => download(url480_360, `${vidID}_480.mp4`), 'N'); };
-        if (pieceLengthJson.sd) { GM_registerMenuCommand('Download 360p', () => download(url480_360, `${vidID}_360.mp4`), 'A'); };
+        if (strAtobJson.includes('1080p')) { GM_registerMenuCommand('Download 1080p', () => download(url1080, `${vidID}_1080p.${strAtobJson.match(/1080p.+?type":"(.+?)"/)[1]}`), 'D'); };
+        if (strAtobJson.includes('720p')) { GM_registerMenuCommand('Download 720p', () => download(url720, `${vidID}_720p.${strAtobJson.match(/720p.+?type":"(.+?)"/)[1]}`), 'W'); };
+        if (strAtobJson.includes('360p')) { GM_registerMenuCommand('Download 360p', () => download(url360, `${vidID}_360p.${strAtobJson.match(/360p.+?type":"(.+?)"/)[1]}`), 'A'); };
+
         if (atobJson) {
-            GM_registerMenuCommand('Copy Info', copyInfo, 'F');
             GM_registerMenuCommand('Copy Vid_ID', copyVidID, 'V');
             GM_registerMenuCommand('Copy Vid_ID List', copyVidIDList, 'C');
+            GM_registerMenuCommand('Copy Info', copyInfo, 'F');
             GM_registerMenuCommand('Clear Vid_ID List', clearVidIDList, 'E');
         };
-        if (pieceLengthJson.fullHd) { GM_registerMenuCommand('Requestly 1080p', () => GM_openInTab(url1080), 'R'); };
-        if (pieceLengthJson.hd) { GM_registerMenuCommand('Requestly 720p', () => GM_openInTab(url720), 'Q'); };
-        if (pieceLengthJson.mHd) { GM_registerMenuCommand('Requestly 480p', () => GM_openInTab(url480_360), 'S'); };
-        if (pieceLengthJson.sd) { GM_registerMenuCommand('Requestly 360p', () => GM_openInTab(url480_360), 'T'); };
+
+        if (strAtobJson.includes('1080p')) { GM_registerMenuCommand('Requestly 1080p', () => GM_openInTab(url1080), 'R'); };
+        if (strAtobJson.includes('720p')) { GM_registerMenuCommand('Requestly 720p', () => GM_openInTab(url720), 'Q'); };
+        if (strAtobJson.includes('360p')) { GM_registerMenuCommand('Requestly 360p', () => GM_openInTab(url360), 'T'); };
 
         function copyInfo() {
             GM_setClipboard(info);
+
             console.log(info);
             alert(info);
         };
 
         function copyVidID() {
             GM_setClipboard(vidID);
-            console.log(vidID);
+
+            console.log(`Copied "${vidID}" to clipboard`);
             alert(`Copied "${vidID}" to clipboard`);
         };
 
         function copyVidIDList() {
             const foundVidID = GM_getValue('foundVidID', '');
             GM_setClipboard(foundVidID);
-            console.log(foundVidID);
 
             let foundCount;
             if (foundVidID.length != 0) {
@@ -95,11 +105,13 @@
                 foundCount = 0;
             };
 
+            console.log(`Found ${foundCount} Vid_ID\nCopied "${foundVidID}" to clipboard`);
             alert(`Found ${foundCount} Vid_ID\nCopied "${foundVidID}" to clipboard`);
         };
 
         function clearVidIDList() {
             GM_setValue('foundVidID', '');
+
             console.log('Cleared Vid_ID List');
             alert('Cleared Vid_ID List');
         };
@@ -135,6 +147,7 @@
             button.className = 'jw-settings-content-item';
             button.textContent = 'Cancel';
             button.style.backgroundColor = '#333333';
+            button.style.textAlign = 'center';
             button.style.fontWeight = 'bold';
             button.style.fontSize = '4vh';
             button.style.width = '11vw';
@@ -161,8 +174,14 @@
         };
 
         async function download(url, name) {
+            if (document.getElementById('DownloadHelper-progress-container')) {
+                alert('Download already in progress');
+                throw new Error('Download already in progress');
+            }
+
             if (navigator.userAgent.match('Chrome')) {
                 url = await GM.xmlHttpRequest({ url: url });
+
                 const download = GM_download({
                     url: url.finalUrl,
                     name: name,
@@ -172,8 +191,8 @@
                         const percent = (progress.loaded / progress.total) * 100;
                         progressBar.style.width = `${percent}%`;
 
-                        const progressText = document.getElementById('DownloadHelper-progress-text');
-                        progressText.textContent = `(${percent.toFixed(2)}%) ${getSize(progress.loaded)} / ${getSize(progress.total)}`;
+                        const text = document.getElementById('DownloadHelper-progress-text');
+                        text.textContent = `(${percent.toFixed(2)}%) ${getSize(progress.loaded)} / ${getSize(progress.total)}`;
                     },
                     onerror: (err) => {
                         console.warn(err);
@@ -184,14 +203,16 @@
                         document.getElementById('DownloadHelper-progress-container').remove();
                     },
                 });
+
                 createProgressBar(download);
+
                 const progressBar = document.getElementById('DownloadHelper-progress-bar');
                 progressBar.style.backgroundColor = '#D22B2B';
                 progressBar.style.width = '100%';
                 progressBar.style.height = '15vh';
 
-                const progressText = document.getElementById('DownloadHelper-progress-text');
-                progressText.textContent = 'Click "Always allow all domains" to skip popup. Waiting for Tampermonkey to fix progress event, currently using a workaround (might not work). I recommend using Requestly option, Firefox, or Python downloader for a better experience.';
+                const text = document.getElementById('DownloadHelper-progress-text');
+                text.textContent = 'Click "Always allow all domains" to skip popup. Manifest V3 broke the script, waiting for Tampermonkey for a fix. This workaround might not work. I recommend using the Requestly option or the Python downloader.';
             } else if (navigator.userAgent.match('Firefox')) {
                 const download = GM_download({
                     url: url,
@@ -202,8 +223,8 @@
                         const percent = (progress.loaded / progress.total) * 100;
                         progressBar.style.width = `${percent}%`;
 
-                        const progressText = document.getElementById('DownloadHelper-progress-text');
-                        progressText.textContent = `(${percent.toFixed(2)}%) ${getSize(progress.loaded)} / ${getSize(progress.total)}`;
+                        const text = document.getElementById('DownloadHelper-progress-text');
+                        text.textContent = `(${percent.toFixed(2)}%) ${getSize(progress.loaded)} / ${getSize(progress.total)}`;
                     },
                     onerror: (err) => {
                         console.warn(err);
@@ -214,6 +235,7 @@
                         document.getElementById('DownloadHelper-progress-container').remove();
                     },
                 });
+
                 createProgressBar(download);
             } else {
                 alert('Unsupported Browser');
