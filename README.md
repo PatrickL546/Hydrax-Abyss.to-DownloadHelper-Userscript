@@ -2,9 +2,6 @@
 
 # [Python downloader](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Python)
 
-> [!WARNING]  
-> Outdated and broken due to new update
-
 ## Requirements
 
 - Install [Tampermonkey](https://www.tampermonkey.net/) then [click here](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper/raw/master/Hydrax-Abyss.to-DownloadHelper.user.js)
@@ -13,16 +10,16 @@
 
 - Install [Requestly](https://requestly.com/) and set it up like [this](https://github.com/PatrickL546/How-to-download-hydrax-abyss.to?tab=readme-ov-file#download-from-browser)
 
-  - Downloads via browser downloader
+  - To download via browser downloader
 
 ## Usage
 
-- Open the extensions menu and use the shortcuts or click an option
+- Open the extensions menu and use the shortcut keys or click an option
 
 - Select an option with Requestly to download using browser downloader
 
-- It builds a list of Vid_ID it finds, and you can copy individual ID or the whole list to use with my [Python downloader](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Python)
+- Download with my [Python downloader](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Python) by copying the current Vid_ID or the Vid_ID List
 
-![image](https://github.com/user-attachments/assets/704deb6e-d5de-48ca-ae45-f0ea2e70a988)
+![image](https://github.com/user-attachments/assets/569cf49d-4740-4dcf-80c8-0d28bfcd50a5)
 
-![image](https://github.com/PatrickL546/Hydrax-Abyss.to-DownloadHelper-Userscript/assets/75874561/08c142ae-7374-4781-9da5-a6262a41ba49)
+![image](https://github.com/user-attachments/assets/0fbc9b73-10e8-47f6-b842-e775421471d7)
