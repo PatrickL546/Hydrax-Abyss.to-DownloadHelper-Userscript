@@ -11,7 +11,7 @@
 // @run-at       document-idle
 // @match        *://*/*
 // @connect      *
-// @version      2.0
+// @version      2.1
 // @grant        GM_registerMenuCommand
 // @grant        GM_setClipboard
 // @grant        GM_setValue
@@ -34,12 +34,18 @@
     if (urlRe.test(location.href) &&
         jwPlayerRe.test(document.head.innerHTML) &&
         coreRe.test(document.body.innerHTML) &&
+        atobRe.test(document.body.textContent) ||
         aaEncodeRe.test(document.body.textContent)) {
 
-        const encoded = document.body.textContent.match(aaEncodeRe)[1] + '.toString()';
-        const decoded = eval?.(encoded);
+        let atobText;
+        if (atobRe.test(document.body.textContent)) {
+            atobText = document.body.textContent;
+        } else if (aaEncodeRe.test(document.body.textContent)) {
+            const encoded = document.body.textContent.match(aaEncodeRe)[1] + '.toString()';
+            atobText = eval?.(encoded);
+        };
 
-        const atobJson = JSON.parse(atob(decoded.match(atobRe)[1]));
+        const atobJson = JSON.parse(atob(atobText.match(atobRe)[1]));
         const strAtobJson = JSON.stringify(atobJson);
 
         const vidID = atobJson.slug;
